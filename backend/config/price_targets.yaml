@@ -1,0 +1,28 @@
+# Price targets to capture for the demo snapshot.
+# The seed script fetches each of these live from the AWS Price List Query API
+# (needs credentials) and writes them to the demo price snapshot. Keeping the
+# list here means no service code, region or instance type is hardcoded in the
+# script. Add entries here as detectors in Phase 2 need more price points.
+
+targets:
+  - service: AmazonEC2
+    region: us-east-1
+    unit: Hrs
+    filters:
+      instanceType: m5.2xlarge
+      operatingSystem: Linux
+      tenancy: Shared
+  - service: AmazonEC2
+    region: us-east-1
+    unit: Hrs
+    filters:
+      instanceType: t3.large
+      operatingSystem: Linux
+      tenancy: Shared
+  - service: AmazonEC2
+    region: eu-west-1
+    unit: Hrs
+    filters:
+      instanceType: c5.xlarge
+      operatingSystem: Linux
+      tenancy: Shared

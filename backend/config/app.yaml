@@ -1,0 +1,44 @@
+# Wastewise for AWS - runtime defaults.
+# This file is the single source of truth for values that are NOT detector rules.
+# Anything here can be overridden by an environment variable (see .env.example).
+# Do not duplicate these values inside Python/JS code.
+
+app:
+  # Local bind address for the FastAPI dev server.
+  host: "127.0.0.1"
+  port: 8000
+  # SQLite database location (relative to backend/ unless absolute).
+  database_path: "data/wastewise.db"
+  # Origins allowed to call the API from the browser during development.
+  cors_origins:
+    - "http://localhost:5173"
+    - "http://127.0.0.1:5173"
+  # Where the other config files live (relative to backend/ unless absolute).
+  language_file: "config/language.en.json"
+  rules_file: "config/rules.yaml"
+  demo_seed_file: "data/demo_seed.json"
+
+pricing:
+  # The AWS Price List API is served from the us-east-1 endpoint globally.
+  # This is the API endpoint region, NOT the region we scan for resources.
+  pricing_api_region: "us-east-1"
+  # How long a fetched price stays "fresh" before we try to refetch it.
+  cache_ttl_seconds: 86400
+  # Hours used to turn an hourly on-demand price into a monthly estimate.
+  # Every savings figure that uses this is an estimate, never exact.
+  hours_per_month: 730
+  # Reporting currency for Phase 1. AWS Price List returns USD; conversion
+  # to other currencies is wired in a later phase.
+  default_currency: "USD"
+
+demo:
+  # When true the app reads the fake account from demo_seed_file instead of
+  # calling AWS. Demo mode must work with zero AWS setup.
+  enabled: true
+  # Real AWS prices captured from the Price List API, used to seed the demo
+  # price cache so demo mode shows genuine (dated) prices with no credentials.
+  # Generate it once with: python scripts/seed_demo_prices.py (needs AWS creds).
+  # If the file is missing, demo pricing reports "unavailable" and never invents a number.
+  price_snapshot_file: "data/price_snapshot.json"
+  # Which price points the seed script should capture (used by that script only).
+  price_targets_file: "config/price_targets.yaml"

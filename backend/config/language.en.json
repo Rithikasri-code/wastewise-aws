@@ -1,0 +1,51 @@
+{
+  "branding": {
+    "name": "Wastewise",
+    "full_name": "Wastewise for AWS",
+    "tagline": "Find the cloud spend you're wasting.",
+    "subtitle": "Read-only analysis of your AWS cloud spending."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "currency_hint": "Prices shown in {currency}"
+  },
+  "errors": {
+    "backend_unreachable": "Could not reach the {name} backend. Start it and reload. ({detail})"
+  },
+  "pricing": {
+    "last_updated": "Prices last updated on {date}",
+    "live": "live from AWS",
+    "cache": "from cache",
+    "cache_stale": "cached (API unreachable)",
+    "row": "{type} in {region}: on-demand {currency} {price} / {unit}",
+    "source_note": "Source: {source}. Monthly figures are estimates.",
+    "unavailable": "Price unavailable right now: {reason}. The tool never invents a number."
+  },
+  "home": {
+    "title": "Overview",
+    "total_waste": "Estimated monthly waste",
+    "issues_found": "Issues found",
+    "top_savings": "Fix these first"
+  },
+  "connect": {
+    "title": "Connect",
+    "demo_mode": "Demo mode",
+    "aws_mode": "My AWS account",
+    "demo_explainer": "Explore Wastewise against a realistic sample AWS account. No AWS account or credentials needed."
+  },
+  "demo": {
+    "loaded_title": "Demo account loaded",
+    "resources_count": "{count} resources in the sample account",
+    "source": "Source file: {path}"
+  },
+  "detectors": {
+    "idle_ec2": "Idle EC2 instances",
+    "unattached_ebs_volume": "Unattached EBS volumes",
+    "old_ebs_snapshot": "Old EBS snapshots",
+    "unattached_eip": "Unattached Elastic IPs",
+    "oversized_rds": "Oversized RDS databases",
+    "idle_load_balancer": "Idle load balancers"
+  }
+}

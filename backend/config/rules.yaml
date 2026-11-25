@@ -1,0 +1,39 @@
+# Wastewise for AWS - detector rule defaults.
+# Every threshold a detector uses lives here so users can tune it from the
+# Settings page and so each finding can show which values produced it.
+# None of these numbers appear in Python code.
+
+idle_ec2:
+  # An instance counts as idle when BOTH metrics stay below these values
+  # across the whole look-back window.
+  cpu_below_percent: 5.0
+  network_below_kbps: 10.0
+  lookback_days: 7
+  # Ignore instances younger than this so we do not judge a machine that has
+  # barely started reporting metrics yet.
+  minimum_age_days: 3
+
+unattached_ebs_volume:
+  # An EBS volume attached to nothing is pure waste; the age only affects the
+  # confidence label, not whether we flag it.
+  high_confidence_age_days: 7
+
+old_ebs_snapshot:
+  # Snapshots older than this with no active purpose are flagged.
+  age_days: 90
+
+unattached_eip:
+  # An Elastic IP with no running instance is billed and wasted.
+  # No numeric threshold needed; presence is enough.
+
+oversized_rds:
+  cpu_below_percent: 10.0
+  connections_below: 5
+  lookback_days: 7
+  minimum_age_days: 3
+
+idle_load_balancer:
+  # A load balancer whose request throughput stays under this value across the
+  # look-back window is considered idle.
+  requests_below_per_minute: 1.0
+  lookback_days: 7
